@@ -1,0 +1,71 @@
+use dma_project_final
+
+#Creating National Park Collection
+
+db.createCollection('National_Park') 
+
+#Inserting into National Park collection:
+
+db.National_Park.insertOne({_id: 1, Name: "Boston National Park", DOE: new Date('2014-07-09'), Location: 'Boston'})
+db.National_Park.insertMany([{_id: 2, Name: "Greenfield National Park", DOE: new Date('2017-09-15'), Location: 'Natick'}, {_id: 3, Name: "Crimmson National Park", DOE: new Date('2021-01-31'), Location: 'Newbury'}])
+
+
+#Creating Employee Collection:
+db.createCollection('Employee')
+
+#Inserting into Employee Collection
+db.Employee.insertOne({_id: 1, Name: 'Chris Brown', Designation: 'Caretaker', DOJ: new Date('2015-05-06'), ParkID: 1})
+db.Employee.insertOne({_id: 2, Name: 'Charlie Brown', Designation: 'Cleaner', DOJ: new Date('2017-10-13'), ParkID: 1})
+db.Employee.insertOne({_id: 3, Name: 'John Green', Designation: 'Guide', DOJ: new Date('2019-10-14'), ParkID: 1})
+db.Employee.insertOne({_id: 4, Name: 'Jules Braide', Designation: 'Caretaker', DOJ: new Date('2020-05-02'), ParkID: 2})
+db.Employee.insertOne({_id: 5, Name: 'Amanda Brown', Designation: 'Cleaner', DOJ: new Date('2020-07-03'), ParkID: 2})
+db.Employee.insertOne({_id: 6, Name: 'John Resgenes', Designation: 'Guide', DOJ: new Date('2020-06-18'), ParkID: 2})
+db.Employee.insertOne({_id: 7, Name: 'Greta Kinglsey', Designation: 'Caretaker', DOJ: new Date('2022-02-22'), ParkID: 3})
+db.Employee.insertOne({_id: 8, Name: 'Tundra Brown', Designation: 'Cleaner', DOJ: new Date('2022-04-19'), ParkID: 3})
+db.Employee.insertOne({_id: 9, Name: 'Isabelle Thunder', Designation: 'Guide', DOJ: new Date('2022-06-17'), ParkID: 3})
+
+#Creating Animals collection
+db.createCollection('Animals')
+
+#Inserting into Animals Collection
+db.Animals.insertOne({_id: 1, Name: 'Tiger', Date_Of_Birth: new Date('2018-10-13'), Date_Of_Death: null, Date_Of_Transfer: null, Country: 'USA', Category: 'Carnivore', ParkID: 1})
+db.Animals.insertOne({_id: 2, Name: 'Cow', Date_Of_Birth: new Date('2015-11-17'), Date_Of_Death: null, Date_Of_Transfer: null, Country: 'Canada', Category: 'Herbivore', ParkID: 1})
+db.Animals.insertOne({_id: 3, Name: 'Fox', Date_Of_Birth: new Date('2016-10-13'), Date_Of_Death: null, Date_Of_Transfer: null, Country: 'USA', Category: 'Omnivore', ParkID: 1})
+db.Animals.insertOne({_id: 4, Name: 'Tiger', Date_Of_Birth: new Date('2018-10-13'), Date_Of_Death: null, Date_Of_Transfer: null, Country: 'USA', Category: 'Carnivore', ParkID: 2})
+db.Animals.insertOne({_id: 5, Name: 'Cow', Date_Of_Birth: new Date('2018-11-17'), Date_Of_Death: null, Date_Of_Transfer: null, Country: 'USA', Category: 'Herbivore', ParkID: 2})
+db.Animals.insertOne({_id: 6, Name: 'Lion', Date_Of_Birth: new Date('2019-10-13'), Date_Of_Death: null, Date_Of_Transfer: null, Country: 'USA', Category: 'Omnivore', ParkID: 2})
+db.Animals.insertOne({_id: 7, Name: 'Tiger', Date_Of_Birth: new Date('2021-10-13'), Date_Of_Death: null, Date_Of_Transfer: null, Country: 'USA', Category: 'Carnivore', ParkID: 3})
+db.Animals.insertOne({_id: 8, Name: 'Buffalo', Date_Of_Birth: new Date('2021-11-17'), Date_Of_Death: null, Date_Of_Transfer: null, Country: 'USA', Category: 'Herbivore', ParkID: 3})
+db.Animals.insertOne({_id: 9, Name: 'Lion', Date_Of_Birth: new Date('2021-10-13'), Date_Of_Death: null, Date_Of_Transfer: null, Country: 'USA', Category: 'Omnivore', ParkID: 3})
+
+
+#Creating Ticket Collection
+db.createCollection('Ticket')
+
+#Inserting into Ticket Collection
+
+db.Ticket.insertOne({_id: 1, Name:'Skimar Kreyzaas' , Amount: 15.00 , Date_Of_Visit: new Date('2022-12-01') , Age: 34, Safari_Type: 'Jeep' , number_of_men: 2 , number_of_women: 2, number_of_kids: 1 , ParkID: 1})
+db.Ticket.insertOne({_id: 2, Name:''Mary Miller' , Amount: 7.50 , Date_Of_Visit: new Date('2022-12-01') , Age: 27, Safari_Type: 'Bus' , number_of_men: 2 , number_of_women: 4, number_of_kids: 1 , ParkID: 1})
+db.Ticket.insertOne({_id: 3, Name:'Willock Miller' , Amount: 22.50 , Date_Of_Visit: new Date('2022-02-03') , Age: 31, Safari_Type: 'Jeep' , number_of_men: 2 , number_of_women: 4, number_of_kids: 3 , ParkID: 2})
+db.Ticket.insertOne({_id: 4, Name:'Nitrak Brady' , Amount: 15.00 , Date_Of_Visit: new Date('2022-02-03') , Age: 19, Safari_Type: 'Bus' , number_of_men: 11 , number_of_women: 1, number_of_kids: 2 , ParkID: 2})
+db.Ticket.insertOne({_id: 5, Name:'Candice Brock' , Amount: 3.75 , Date_Of_Visit: new Date('2022-03-01') , Age: 22, Safari_Type: 'Jeep' , number_of_men: 1 , number_of_women: 0, number_of_kids: 1 , ParkID: 3})
+db.Ticket.insertOne({_id: 6, Name:'Brock Lance' , Amount: 2.50 , Date_Of_Visit: new Date('2022-03-01') , Age: 46, Safari_Type: 'Bus' , number_of_men: 2 , number_of_women: 0, number_of_kids: 0 , ParkID: 3})
+
+Few queries on the database:
+
+db.National_Park.find()
+
+db.Employee.find()
+
+db.Animals.find()
+
+db.National_Park.find()
+
+#Show all the animals born after 1st January 2018:
+> db.Animals.find({Date_Of_Birth: {$gt: ISODate('2018-01-01')}})
+
+Or we could just print the animal and the date of birth instead of printing full document:
+> db.Animals.find({Date_Of_Birth: {$gt: ISODate('2018-01-01')}}, {Name: true, Date_Of_Birth: true})
+
+#Total number of men visiting the National Parks
+>db.Ticket.aggregate([{$group: {_id: "$ParkID", Total_men: {$sum: "$number_of_men"}}}])

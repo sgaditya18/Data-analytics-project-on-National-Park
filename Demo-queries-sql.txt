@@ -1,0 +1,67 @@
+Check these SQL queries:
+#Get the List of Employees who have joined within the last two year from current date
+Query-1:
+SELECT EmployeeID, Name, Designation, DOJ, ParkID FROM Employee WHERE DOJ >= DATE_SUB(NOW(), INTERVAL 2 YEAR) ORDER BY ParkID ASC;
+
+#Find Name of animals whose country of birth is USA
+Query-2:
+SELECT a.Name, a.country, np.Name FROM Animals a
+INNER JOIN NATIONAL_PARK np on np.ParkID = a.ParkID
+WHERE a.Country = 'USA'
+
+#Find total number of Animals present in all the National Parks grouped by Category
+Query-3:
+SELECT Category, COUNT(*) AS 'Total Animals'
+FROM Animals
+GROUP BY Category
+
+#Show total number of Animal births per year
+Query-4: 
+SELECT year(Date_Of_Birth) as 'Year', count(*) as 'Total' from Animals 
+GROUP BY year(Date_Of_Birth)
+ORDER BY YEAR(Date_Of_Birth)
+
+#Retrieve the name and date of birth of all animals that were born in the same year as the oldest animal in the table:
+Query-5:
+SELECT Name, Date_Of_Birth FROM Animals WHERE YEAR(Date_Of_Birth) = (
+SELECT MIN(YEAR(Date_Of_Birth)) FROM Animals)
+
+#Calculate the average age of visitors who went on a jeep safari in the past month
+Query-6:
+SELECT AVG(Age) FROM Ticket WHERE Safari_Type = 'Jeep' AND Date_Of_Visit >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+
+#Calculate the total number of men, women, and kids who accompanied the main visitor for each park:
+Query-7:
+SELECT National_Park.Name, SUM(Ticket.number_of_men) as Total_Men, SUM(Ticket.number_of_women) as Total_Women, SUM(Ticket.number_of_kids) as Total_Kids
+FROM Ticket
+INNER JOIN National_Park ON Ticket.ParkID = National_Park.ParkID
+GROUP BY National_Park.Name
+
+#Find all ticket IDs where the amount paid is greater than the average amount paid by all visitors:
+Query-8:
+SELECT TicketID
+FROM Ticket
+WHERE Amount > ALL (SELECT AVG(Amount) FROM Ticket);
+
+#Find all ticket IDs where the number of men who accompanied the main visitor is greater than the number of women who accompanied any visitor:
+Query-9:
+SELECT TicketID, number_of_men, number_of_women
+FROM Ticket
+WHERE number_of_men > ANY (SELECT number_of_women FROM Ticket);
+
+#Find all ticket IDs where the Safari Type is 'Jeep' and the National Park with the specified ParkID exists:
+Query-10:
+SELECT TicketID
+FROM Ticket
+WHERE Safari_type = 'Jeep' AND EXISTS (SELECT 1 FROM National_Park WHERE National_Park.ParkID = Ticket.ParkID);
+
+#Show the list of National Parks having more than 2 employees
+Query-11:
+SELECT Name
+FROM National_Park
+WHERE ParkID IN (
+    SELECT ParkID
+    FROM Employee
+    GROUP BY ParkID
+    HAVING COUNT(*) > 2
+)
